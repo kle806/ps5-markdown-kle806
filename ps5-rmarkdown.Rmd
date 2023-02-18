@@ -216,9 +216,16 @@ gapminder %>%
   knitr::kable()
 ```
 
-### Question 5 working on
+### Question 5
 ```{r, message = FALSE}
-
+gapminder %>% 
+  filter(!is.na(lifeExpectancy), !is.na(region), !is.na(time)) %>%
+  group_by(region) %>% 
+  mutate(prev = lag(lifeExpectancy), growth = lifeExpectancy - prev) %>% 
+  filter(!is.na(growth)) %>% 
+  summarize(avg_growth_le = mean(growth)) %>% 
+  arrange(desc(avg_growth_le)) %>% 
+  knitr::kable()
 ```
 
 ### Question 6

@@ -371,27 +371,27 @@ columns.</p>
 <pre class="r"><code>gapminder %&gt;%
   sample_n(5) %&gt;% 
   knitr::kable()</code></pre>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="1%" />
-<col width="5%" />
+<col width="3%" />
 <col width="1%" />
 <col width="2%" />
-<col width="8%" />
+<col width="5%" />
 <col width="5%" />
 <col width="1%" />
 <col width="4%" />
-<col width="3%" />
+<col width="4%" />
 <col width="4%" />
 <col width="4%" />
 <col width="5%" />
 <col width="5%" />
-<col width="3%" />
+<col width="4%" />
 <col width="2%" />
 <col width="5%" />
-<col width="4%" />
 <col width="5%" />
-<col width="4%" />
+<col width="5%" />
+<col width="5%" />
 <col width="3%" />
 <col width="2%" />
 <col width="4%" />
@@ -430,26 +430,80 @@ columns.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">COM</td>
-<td align="left">Comoros</td>
-<td align="left">KM</td>
+<td align="left">VNM</td>
+<td align="left">Viet Nam</td>
+<td align="left">VN</td>
+<td align="left">Asia</td>
+<td align="left">South-eastern Asia</td>
+<td align="left">NA</td>
+<td align="right">1960</td>
+<td align="right">32670039</td>
+<td align="right">6.348</td>
+<td align="right">59.03900</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">5944.207</td>
+<td align="right">NA</td>
+<td align="right">0.18195</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">GIN</td>
+<td align="left">Guinea</td>
+<td align="left">GN</td>
 <td align="left">Africa</td>
 <td align="left">Sub-Saharan Africa</td>
-<td align="left">Eastern Africa</td>
-<td align="right">2019</td>
-<td align="right">850886</td>
-<td align="right">4.138</td>
-<td align="right">64.321</td>
-<td align="right">62.9</td>
+<td align="left">Western Africa</td>
+<td align="right">2017</td>
+<td align="right">12067539</td>
+<td align="right">4.777</td>
+<td align="right">60.70600</td>
+<td align="right">103.2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">1399.3885</td>
-<td align="right">84.04824</td>
+<td align="right">869.019</td>
+<td align="right">35.4</td>
+<td align="right">145000</td>
+<td align="right">NA</td>
+<td align="right">3735324</td>
+<td align="right">15.61060</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
+<td align="right">0</td>
 <td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ZAF</td>
+<td align="left">South Africa</td>
+<td align="left">ZA</td>
+<td align="left">Africa</td>
+<td align="left">Sub-Saharan Africa</td>
+<td align="left">Southern Africa</td>
+<td align="right">2018</td>
+<td align="right">57792520</td>
+<td align="right">2.405</td>
+<td align="right">63.85700</td>
+<td align="right">35.0</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">7431.956</td>
+<td align="right">84.7</td>
+<td align="right">963410</td>
+<td align="right">NA</td>
+<td align="right">14971922</td>
+<td align="right">72.83333</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -457,110 +511,56 @@ columns.</p>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td align="left">PYF</td>
-<td align="left">French Polynesia</td>
-<td align="left">PF</td>
-<td align="left">Oceania</td>
-<td align="left">Polynesia</td>
+<td align="left">SVK</td>
+<td align="left">Slovakia</td>
+<td align="left">SK</td>
+<td align="left">Europe</td>
+<td align="left">Eastern Europe</td>
 <td align="left">NA</td>
-<td align="right">1977</td>
-<td align="right">139891</td>
-<td align="right">4.301</td>
-<td align="right">62.728</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">440</td>
-<td align="right">140</td>
-<td align="right">NA</td>
-<td align="right">270.50000</td>
-<td align="right">275.025</td>
-<td align="right">NA</td>
-<td align="right">1.96599</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">CRI</td>
-<td align="left">Costa Rica</td>
-<td align="left">CR</td>
-<td align="left">Americas</td>
-<td align="left">Latin America and the Caribbean</td>
-<td align="left">Central America</td>
 <td align="right">1967</td>
-<td align="right">1696732</td>
-<td align="right">5.416</td>
-<td align="right">64.358</td>
-<td align="right">84.9</td>
+<td align="right">4449367</td>
+<td align="right">2.480</td>
+<td align="right">70.41854</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">3323.1066</td>
-<td align="right">NA</td>
-<td align="right">16360</td>
-<td align="right">4800</td>
-<td align="right">188871</td>
-<td align="right">107.36842</td>
-<td align="right">876.413</td>
-<td align="right">NA</td>
-<td align="right">0.51653</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">NPL</td>
-<td align="left">Nepal</td>
-<td align="left">NP</td>
-<td align="left">Asia</td>
-<td align="left">Southern Asia</td>
-<td align="left">NA</td>
-<td align="right">2000</td>
-<td align="right">23941110</td>
-<td align="right">3.955</td>
-<td align="right">62.288</td>
-<td align="right">81.0</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">455.2771</td>
-<td align="right">28.91624</td>
-<td align="right">42491</td>
-<td align="right">26300</td>
-<td align="right">7115587</td>
-<td align="right">31.01699</td>
-<td align="right">3069.279</td>
-<td align="right">31234.02</td>
-<td align="right">0.12820</td>
-<td align="right">99.98741</td>
-<td align="right">268</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">PSE</td>
-<td align="left">Palestine, State of</td>
-<td align="left">PS</td>
+<td align="left">HKG</td>
+<td align="left">Hong Kong</td>
+<td align="left">HK</td>
 <td align="left">Asia</td>
-<td align="left">Western Asia</td>
+<td align="left">Eastern Asia</td>
 <td align="left">NA</td>
-<td align="right">1969</td>
+<td align="right">1999</td>
+<td align="right">6606500</td>
+<td align="right">0.981</td>
+<td align="right">80.38293</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
+<td align="right">21566.928</td>
+<td align="right">100.0</td>
+<td align="right">70</td>
 <td align="right">NA</td>
+<td align="right">0</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">3670</td>
-<td align="right">244</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">42716.883</td>
+<td align="right">48968.04</td>
+<td align="right">6.46589</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -1189,11 +1189,117 @@ years. Asian countries also retain being the region with the most
 populated countries. The only difference is that there seem to be more
 countries in the figure now.</p>
 </div>
-<div id="question-4-wokring-on" class="section level3">
-<h3>Question 4 wokring on</h3>
+<div id="question-4-1" class="section level3">
+<h3>Question 4</h3>
+<pre class="r"><code>gapminder %&gt;% 
+  group_by(region, time, lifeExpectancy) %&gt;% 
+  filter(!is.na(lifeExpectancy), !is.na(region), !is.na(time)) %&gt;% 
+  filter(time == &quot;1960&quot; | time == &quot;2016&quot;) %&gt;% 
+  group_by(region, time) %&gt;% 
+  summarize(region_le = mean(lifeExpectancy)) %&gt;% 
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">region</th>
+<th align="right">time</th>
+<th align="right">region_le</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="right">1960</td>
+<td align="right">41.46600</td>
+</tr>
+<tr class="even">
+<td align="left">Africa</td>
+<td align="right">2016</td>
+<td align="right">63.00138</td>
+</tr>
+<tr class="odd">
+<td align="left">Americas</td>
+<td align="right">1960</td>
+<td align="right">58.64651</td>
+</tr>
+<tr class="even">
+<td align="left">Americas</td>
+<td align="right">2016</td>
+<td align="right">75.33572</td>
+</tr>
+<tr class="odd">
+<td align="left">Asia</td>
+<td align="right">1960</td>
+<td align="right">51.64931</td>
+</tr>
+<tr class="even">
+<td align="left">Asia</td>
+<td align="right">2016</td>
+<td align="right">73.99026</td>
+</tr>
+<tr class="odd">
+<td align="left">Europe</td>
+<td align="right">1960</td>
+<td align="right">68.28254</td>
+</tr>
+<tr class="even">
+<td align="left">Europe</td>
+<td align="right">2016</td>
+<td align="right">79.02642</td>
+</tr>
+<tr class="odd">
+<td align="left">Oceania</td>
+<td align="right">1960</td>
+<td align="right">56.39613</td>
+</tr>
+<tr class="even">
+<td align="left">Oceania</td>
+<td align="right">2016</td>
+<td align="right">73.02476</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="question-5-wokring-on" class="section level3">
-<h3>Question 5 wokring on</h3>
+<div id="question-5-1" class="section level3">
+<h3>Question 5</h3>
+<pre class="r"><code>gapminder %&gt;% 
+  filter(!is.na(lifeExpectancy), !is.na(region), !is.na(time)) %&gt;%
+  group_by(region) %&gt;% 
+  mutate(prev = lag(lifeExpectancy), growth = lifeExpectancy - prev) %&gt;% 
+  filter(!is.na(growth)) %&gt;% 
+  summarize(avg_growth_le = mean(growth)) %&gt;% 
+  arrange(desc(avg_growth_le)) %&gt;% 
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">region</th>
+<th align="right">avg_growth_le</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Asia</td>
+<td align="right">0.0113589</td>
+</tr>
+<tr class="even">
+<td align="left">Africa</td>
+<td align="right">0.0074452</td>
+</tr>
+<tr class="odd">
+<td align="left">Americas</td>
+<td align="right">0.0061458</td>
+</tr>
+<tr class="even">
+<td align="left">Europe</td>
+<td align="right">0.0040374</td>
+</tr>
+<tr class="odd">
+<td align="left">Oceania</td>
+<td align="right">0.0031857</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="question-6-1" class="section level3">
 <h3>Question 6</h3>
@@ -1233,15 +1339,15 @@ countries in the figure now.</p>
   filter(!is.na(lifeExpectancy), !is.na(time), !is.na(name)) %&gt;% 
   filter(time == &quot;1960&quot;) %&gt;% 
   summarize(total_countries = n_distinct(name))
-US_le_1960_relative &lt;- US_le_1960$rank/countries_1960
+US_le_1960_relative &lt;- round((US_le_1960$rank/countries_1960), 2)
 
 countries_2019 &lt;- gapminder %&gt;% 
   filter(!is.na(lifeExpectancy), !is.na(time), !is.na(name)) %&gt;% 
   filter(time == &quot;2019&quot;) %&gt;% 
   summarize(total_countries = n_distinct(name))
-US_le_2019_relative &lt;- US_le_2019$rank/countries_2019</code></pre>
-<p>US rank in life expectancy rank in 1960 was 0.0904255 and in 2019 it
-was 0.2346939.</p>
+US_le_2019_relative &lt;- round((US_le_2019$rank/countries_2019), 2)</code></pre>
+<p>US rank in life expectancy rank in 1960 was 0.09 and in 2019 it was
+0.23.</p>
 </div>
 </div>
 
