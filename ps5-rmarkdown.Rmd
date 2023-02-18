@@ -1,0 +1,196 @@
+---
+title: "ps5-rmarkdown"
+author: "Kelly Le"
+date: "2023-02-13"
+output: html_document
+---
+
+## Load and check data
+### Question 2
+```{r, message=FALSE}
+library(tidyverse)
+gapminder <- read_delim("gapminder.csv")
+```
+The **gapminder** data contains `r nrow(gapminder)` rows and `r ncol(gapminder)` columns.
+
+### Question 3
+```{r, message=FALSE}
+gapminder %>%
+  sample_n(5) %>% 
+  knitr::kable()
+```
+
+## Descriptive statistics
+### Question 1
+```{r}
+countries <- gapminder %>% 
+  group_by(`name`) %>% 
+  summarize(n = n_distinct(`name`)) %>% 
+  nrow()
+iso2 <- gapminder %>% 
+  select(`iso2`) %>% 
+  summarize(n = n_distinct(`iso2`))
+iso3 <- gapminder %>% 
+  select(`iso3`) %>% 
+  summarize(n = n_distinct(`iso3`))
+```
+The **gapminder** data contains `r countries` different countries, `r iso2` different iso2, and `r iso3` different iso3.
+
+### Question 2
+#### Part a
+```{r, message = FALSE}
+gapminder %>%
+  group_by(`iso2`) %>% 
+  select(`name`, `iso2`) %>% 
+  summarize(number_iso2 = n_distinct(`name`)) %>% 
+  arrange(desc(number_iso2)) %>% 
+  head(5) %>% 
+  knitr::kable()
+```
+#### Part b
+```{r, message=FALSE}
+gapminder %>% 
+  group_by(`name`, `iso3`) %>% 
+  filter(is.na(name)) %>% 
+  summarize(number_iso3 = n_distinct(`iso3`)) %>% 
+  arrange(desc(number_iso3)) %>% 
+  knitr::kable()
+```
+
+### Question 3
+```{r}
+min_time <- gapminder %>%
+  select(`time`) %>%
+  arrange(`time`) %>% 
+  head(1)
+max_time <- gapminder %>%
+  select(`time`) %>%
+  arrange(desc(`time`)) %>% 
+  head(1)
+```
+The min year in this data is `r min_time` and the max is `r max_time`.
+
+## CO2 emissions
+### Question 1
+```{r, message=FALSE}
+gapminder %>% 
+  group_by(time) %>% 
+  filter(is.na(co2), is.na(co2_PC), !is.na(time)) %>% 
+  summarize(na_co2 = sum(is.na(co2)), na_co2_PC = sum(is.na(co2_PC))) %>% 
+  select(time, na_co2, na_co2_PC) %>%
+  arrange(desc(time)) %>% 
+  head(5) %>% 
+  knitr::kable()
+```
+
+### Question 2
+```{r}
+gapminder %>% 
+  filter(!is.na(co2)) %>% 
+  filter(name == "United States of America" | 
+           name == "China" | 
+           name == "India" | 
+           name == "Indonesia" | 
+           name == "Pakistan" | 
+           name == "Brazil") %>% 
+  ggplot()+
+  geom_point(aes(x = time, y = co2))+
+  facet_wrap(~name)
+```
+All 6 countries shown in the plots are highly populated, but only the USA, China, and India seem to have a large role in CO2 emissions. The other countries have slopes that are close to 0.
+
+### Question 3
+```{r}
+gapminder %>% 
+  filter(!is.na(co2_PC)) %>% 
+  filter(name == "United States of America" | 
+           name == "China" | 
+           name == "India" | 
+           name == "Indonesia" | 
+           name == "Pakistan" | 
+           name == "Brazil") %>% 
+  ggplot()+
+  geom_point(aes(x = time, y = co2_PC))+
+  facet_wrap(~name)
+```
+These figures suggest a similar observation to the last question, except that it seems like India has less influence on CO2 emissions than previously thought. When capita is considered, it falls off. The USA and China have the most activity looking at CO2 per capita.
+
+### Question 4
+```{r, message=FALSE}
+gapminder %>% 
+  filter(!is.na(co2_PC), !is.na(region)) %>% 
+  group_by(region, time) %>% 
+  summarize(avg_co2 = mean(co2_PC)) %>%
+  filter(time == "2016" | time == "1960") %>% 
+  knitr::kable()
+```
+
+### Question 5 working on
+```{r}
+
+```
+
+### Question 6 working on
+```{r, message = FALSE}
+top3countries_co2_pc <- function(region_name){
+  gapminder %>% 
+    filter(!is.na(co2_PC), !is.na(region), !is.na(name)) %>%
+    filter(time == "2016") %>% 
+    filter(region == region_name) %>% 
+    group_by(name, region) %>% 
+    summarize(avg_co2 = mean(co2_PC))  %>%
+    arrange(desc(avg_co2)) %>% 
+    head(3)
+}
+bottom3countries_co2_pc <- function(region_name){
+  gapminder %>% 
+    filter(!is.na(co2_PC), !is.na(region), !is.na(name)) %>%
+    filter(time == "2016") %>% 
+    filter(region == region_name) %>% 
+    group_by(name, region) %>% 
+    summarize(avg_co2 = mean(co2_PC))  %>%
+    arrange(desc(avg_co2)) %>% 
+    tail(3)
+}
+region_names <- gapminder %>% 
+  filter(!is.na(region)) %>% 
+  group_by(region) %>% 
+  summarize(number_of_regions = n_distinct(region)) %>% 
+  c()
+for(i in 1:length(region_names$region)){
+  top3countries_co2_pc(region_names$region[[i]]) %>% 
+    knitr::kable()
+  bottom3countries_co2_pc(region_names$region[[i]]) %>% 
+    knitr::kable()
+}
+```
+
+## GDP per capita
+### Question 1
+```{r, message = FALSE}
+gapminder %>% 
+  filter(!is.na(GDP_PC), !is.na(lifeExpectancy), !is.na(name)) %>% 
+  filter(time == "1960") %>% 
+  select(GDP_PC, lifeExpectancy, name, totalPopulation, region) %>% 
+  ggplot(aes(x = lifeExpectancy, y = GDP_PC))+
+  geom_point(aes(color = region, size = totalPopulation))
+```
+Looking at this figure, I see that European countries seem to have higher life expectancy and GDP per capita than any other region and country. Asian countries tend to be the largest in population but are scattered when looking at GDP and life expectancy. African countries seem to have the lowest life expectancy and GDP.
+
+### Question 2
+```{r, message = FALSE}
+gapminder %>% 
+  filter(!is.na(GDP_PC), !is.na(lifeExpectancy), !is.na(name)) %>% 
+  filter(time == "2016") %>% 
+  select(GDP_PC, lifeExpectancy, name, totalPopulation, region) %>% 
+  ggplot(aes(x = lifeExpectancy, y = GDP_PC))+
+  geom_point(aes(color = region, size = totalPopulation))
+```
+
+### Question 3
+Data from 2016 was used instead because 2019 data are all NAs. Observations about European countries and African countries have not changed and seem to fit the observation even more over the last 60 years. Asian countries also retain being the region with the most populated countries. The only difference is that there seem to be more countries in the figure now.
+
+### Question 4
+```{r, message = FALSE}
+
+```
