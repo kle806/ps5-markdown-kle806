@@ -205,12 +205,21 @@ gapminder %>%
 ### Question 3
 Data from 2016 was used instead because 2019 data are all NAs. Observations about European countries and African countries have not changed and seem to fit the observation even more over the last 60 years. Asian countries also retain being the region with the most populated countries. The only difference is that there seem to be more countries in the figure now.
 
-### Question 4 working on
+### Question 4
 ```{r, message = FALSE}
-
+gapminder %>% 
+  group_by(region, time, lifeExpectancy) %>% 
+  filter(!is.na(lifeExpectancy), !is.na(region), !is.na(time)) %>% 
+  filter(time == "1960" | time == "2016") %>% 
+  group_by(region, time) %>% 
+  summarize(region_le = mean(lifeExpectancy)) %>% 
+  knitr::kable()
 ```
 
 ### Question 5 working on
+```{r, message = FALSE}
+
+```
 
 ### Question 6
 ```{r, message = FALSE}
