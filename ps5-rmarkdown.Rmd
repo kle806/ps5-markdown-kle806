@@ -140,45 +140,23 @@ gapminder %>%
 
 ### Question 6
 ```{r, message = FALSE}
-top3countries_co2_pc <- function(region_name){
+top_bottom_3countries_co2_pc <- function(region_name){
   gapminder %>% 
     filter(!is.na(co2_PC), !is.na(region), !is.na(name)) %>%
     filter(time == "2016") %>% 
     filter(region == region_name) %>% 
-    group_by(name, region) %>% 
-    summarize(avg_co2 = mean(co2_PC))  %>%
-    arrange(desc(avg_co2)) %>% 
-    head(3) %>% 
+    filter(rank(desc(co2_PC))< 4|rank(co2_PC)< 4) %>% 
+    select(region, name, co2_PC) %>% 
+    arrange(desc(co2_PC)) %>% 
     knitr::kable()
 }
-bottom3countries_co2_pc <- function(region_name){
-  gapminder %>% 
-    filter(!is.na(co2_PC), !is.na(region), !is.na(name)) %>%
-    filter(time == "2016") %>% 
-    filter(region == region_name) %>% 
-    group_by(name, region) %>% 
-    summarize(avg_co2 = mean(co2_PC))  %>%
-    arrange((avg_co2)) %>% 
-    head(3) %>% 
-    knitr::kable()
-}
+top_bottom_3countries_co2_pc("Africa")
+top_bottom_3countries_co2_pc("Americas")
+top_bottom_3countries_co2_pc("Asia")
+top_bottom_3countries_co2_pc("Europe")
+top_bottom_3countries_co2_pc("Oceania")
 
-top3countries_co2_pc("Africa")
-bottom3countries_co2_pc("Africa")
-
-top3countries_co2_pc("Americas")
-bottom3countries_co2_pc("Americas")
-
-top3countries_co2_pc("Asia")
-bottom3countries_co2_pc("Asia")
-
-top3countries_co2_pc("Europe")
-bottom3countries_co2_pc("Europe")
-
-top3countries_co2_pc("Oceania")
-bottom3countries_co2_pc("Oceania")
 ```
-This is super inefficient but I couldn't get my pipe to work or a for loop and I ran out of time. 
 
 ## GDP per capita
 ### Question 1
