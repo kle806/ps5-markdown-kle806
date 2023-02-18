@@ -98,6 +98,7 @@ gapminder %>%
   geom_point(aes(x = time, y = co2))+
   facet_wrap(~name)
 ```
+
 All 6 countries shown in the plots are highly populated, but only the USA, China, and India seem to have a large role in CO2 emissions. The other countries have slopes that are close to 0.
 
 ### Question 3
@@ -114,6 +115,7 @@ gapminder %>%
   geom_point(aes(x = time, y = co2_PC))+
   facet_wrap(~name)
 ```
+
 These figures suggest a similar observation to the last question, except that it seems like India has less influence on CO2 emissions than previously thought. When capita is considered, it falls off. The USA and China have the most activity looking at CO2 per capita.
 
 ### Question 4
@@ -205,6 +207,7 @@ gapminder %>%
   arrange(desc(avg_growth_le)) %>% 
   knitr::kable()
 ```
+I see that the life expectancy in Asia has grown the most and the least in Oceania.
 
 ### Question 6
 ```{r, message = FALSE}
